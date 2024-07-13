@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .head {
+        text-align: center;
+      }
+      i {
+        display: inline;
+      }
+      .table-container {
+        max-height: 475px;
+        overflow-y: scroll;
+      }
+      .delete:hover {
+        color: blue;
+        cursor: pointer;
+      }
+      .edit:hover {
+        color: blue;
+        cursor: pointer;
+      }
+      .inedit {
+        padding-right: 5px;
+      }
+      form {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #FFF;
+        box-shadow: 0px 5px 10px #00c6ff;
+      }
+
+      .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        flex-basis: 25%;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="radio"] {
+        flex-basis: 75%;
+        padding: 10px;
+        border: 1px solid #CCC;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+       input[type="radio"] {
+        margin-left: 47px;
+        appearance: none;
+      }
+
+      input[type="radio"]::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #999;
+        border-radius: 50%;
+        margin-right: 5px;
+        vertical-align: middle;
+      }
+
+      input[type="radio"]:checked::before {
+        background-color: #008CBA;
+        border-color: #008CBA;
+      }
+
+      button[type="submit"] {
+        background-color: #008CBA;
+        color: #FFF;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="col-12 mt-4">
+        <h1 class="head">Manage Members</h1>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-4 mt-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="enter members name or id"
+                name="search"
+                id="search"
+                aria-label="Username"
+                [(ngModel)]="searchtext"
+              />
+            </div>
+            <div class="col-2 mt-2">
+              <i class="fa-sharp fa-solid fa-magnifying-glass fa-2x"></i>
+            </div>
+          </div>
+          <div class="table-container table-responsive mt-4">
+            <table class="table table-striped table-hover table-secondary">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">NAME</th>
+                  <th scope="col">PROFFESSION</th>
+                  <th scope="col">PHONE</th>
+                  <th scope="col">AGE</th>
+                  <th scope="col">GENDER</th>
+                  <th scope="col">ACTION</th>
+                  <th scope="col">ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  scope="row"
+                  *ngFor="let members of members | filter : searchtext"
+                >
+                  <td>{{ members.id }}</td>
+                  <td>{{ members.name }}</td>
+                  <td>{{ members.proffession }}</td>
+                  <td>{{ members.phno }}</td>
+
+                  <td>{{ members.age }}</td>
+                  <td>{{ members.gender }}</td>
+
+                  <td>
+                    <span (click)="deletemember(members.id)" class="delete"
+                      ><i class="fa-sharp fa-regular fa-trash-can"></i
+                    ></span>
+                  </td>
+                  <td>
+                    <div
+                      class="edit"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      (click)="editmember(members.id)"
+                    >
+                      <span class="inedit"><i class="fa fa-edit"></i></span>edit
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">EDIT DATA FORM</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="message" class="alert alert-success alert-dismissible fade show" id="liveAlertPlaceholder" role="alert">
+          <strong>  CHANGES UPDATED SUCCESSFULLY!</strong>
+
+          </div>
+          <form [formGroup]="editmembersform" (ngSubmit)="updatemembers()">
+            <div class="form-group">
+              <label for="name">name:</label>
+              <input type="text" id="name" name="name" required formControlName="name" />
+            </div>
+            <div class="form-group">
+              <label for="proffession">proffession:</label>
+              <input type="text" id="proffession" name="proffession" required formControlName="proffession"/>
+            </div>
+            <div class="form-group">
+              <label for="phno">phno:</label>
+              <input type="tel" id="phno" name="phno" required formControlName="phno" />
+            </div>
+            <div class="form-group">
+              <label for="age">age:</label>
+              <input type="number" id="age" name="age" required formControlName="age"/>
+            </div>
+            <div class="form-group1">
+              <label for="gender">gender:</label>
+            <input type="radio" name="gender"  value="male" formControlName="gender"><span class="gen">
+            male</span>
+        <input type="radio" name="gender" value="female" formControlName="gender"><span class="gen">female</span>
+      </div>
+            <button type="submit" id="liveAlertPlaceholder">Send</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

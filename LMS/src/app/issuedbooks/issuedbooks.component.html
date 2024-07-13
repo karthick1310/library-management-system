@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      .head {
+        text-align: center;
+      }
+      i {
+        display: inline;
+      }
+      .table-container {
+        max-height: 475px;
+        overflow-y: scroll;
+      }
+      .delete:hover {
+        color: blue;
+        cursor: pointer;
+      }
+      .edit:hover {
+        color: blue;
+        cursor: pointer;
+      }
+      .inedit {
+        padding-right: 5px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="col-12 mt-4">
+        <h1 class="head"> ISSUED Books</h1>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-4 mt-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="enter book name or author name"
+                name="search"
+                id="search"
+                aria-label="Username"
+                [(ngModel)]="searchtext"
+              />
+            </div>
+            <div class="col-2 mt-2">
+              <i class="fa-sharp fa-solid fa-magnifying-glass fa-2x"></i>
+            </div>
+          </div>
+          <div class="table-container table-responsive mt-4">
+            <table class="table table-striped table-hover table-secondary">
+              <thead>
+                <tr>
+                  <th scope="col">BOOK ID</th>
+                  <th scope="col">MEMBER ID</th>
+                  <th scope="col">MEMBER NAME</th>
+                  <th scope="col">BOOK NAME</th>
+                  <th scope="col">PHONE</th>
+                  <th scope="col">ISSUE DATE</th>
+                  <th scope="col">DUE DATE</th>
+
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  scope="row"
+                  *ngFor="let books of books | filter : searchtext"
+                >
+                  <td>{{ books.bookid }}</td>
+                  <td>{{ books.memberid }}</td>
+                  <td>{{ books.name }}</td>
+                  <td>{{ books.bookname }}</td>
+                  <td>{{books.phno}}</td>
+                  <td>{{ books.issueddate }}</td>
+                  <td>{{ books.duedate }}</td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div></div>
+
+
+  </body>
+</html>

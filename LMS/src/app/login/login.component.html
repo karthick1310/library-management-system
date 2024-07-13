@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <style>
+   .main{
+    background: linear-gradient(to bottom, #0072ff, #00c6ff);
+   }
+   .sidebar{
+    display: flex;
+    text-align: center;
+   }
+
+   img{
+     padding-right: 20px;
+     margin-left: 100px;
+   }
+   .container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+   }
+   .container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		form {
+			background-color:none;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.6);
+			padding: 20px;
+			text-align: center;
+			width: 400px;
+		}
+
+		form label {
+			display: block;
+			margin-bottom: 10px;
+			text-align: left;
+		}
+
+		form input[type="text"],
+		form input[type="password"] {
+			border: none;
+			border-bottom: 1px solid #ccc;
+			margin-bottom: 20px;
+			padding: 10px 10px 10px 40px;
+			width: 100%;
+			background-position: 10px center;
+			background-repeat: no-repeat;
+			color: #333;
+		}
+
+
+
+		button[type="submit"] {
+			background-color: #4CAF50;
+			border: none;
+			border-radius: 5px;
+			color: #fff;
+			cursor: pointer;
+			padding: 10px;
+			width: 100%;
+		}
+
+		button[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+    i{
+      padding-right: 5px;
+    }
+  </style>
+
+</head>
+<body>
+
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-8 sidebar">
+
+          <div class="center">
+
+          <img src="/assets/img/library-3.png.png" width="721" height="721" alt="">
+        </div>
+        </div>
+        <div class="col-4 main">
+
+     	<div class="container">
+
+		<form [formGroup]="login" (ngSubmit)="loginn()">
+      <h2>Welcome !</h2>
+      <br>
+			<p>Login to your account</p>
+      <br>
+
+			<label for="username" ><i class="fa fa-user"></i>Username</label>
+			<input type="text" id="username" name="username" placeholder="Enter your username" formControlName="username">
+      <div class="text-danger">
+        <div *ngIf="(login.get('username')?.hasError('required') && login.get('username')?.touched)"><b>This Field Is Required</b></div>
+        </div>
+			<label for="password"><i class="fa fa-lock"></i>Password</label>
+			<input type="password" id="password" name="password" placeholder="Enter your password" formControlName="password">
+      <div class="text-danger">
+        <div *ngIf="(login.get('password')?.hasError('required') && login.get('password')?.touched)"><b>This Field Is Required</b></div>
+        </div>
+      <a  ><button value="Login" type="submit">
+      Submit</button></a>
+      <br>
+
+		</form>
+	</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
+

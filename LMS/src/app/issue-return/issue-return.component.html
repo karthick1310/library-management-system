@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #F4F4F4;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+
+  h3 {
+
+    margin: 15px 475px;
+  }
+
+  form {
+    max-width: 1000px;
+    margin: 0 50px;
+    padding: 20px;
+    background-color: #FFF;
+    box-shadow: 0px 5px 10px #00c6ff;
+  }
+
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    flex-basis: 25%;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="radio"] {
+    flex-basis: 75%;
+    padding: 10px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type="radio"] {
+    margin-left: 178px;
+    appearance: none;
+  }
+
+  input[type="radio"]::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #999;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  input[type="radio"]:checked::before {
+    background-color: #008CBA;
+    border-color: #008CBA;
+  }
+
+  button[type="submit"] {
+    background-color: #008CBA;
+    color: #FFF;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  .gen{
+    padding-left: 5px;
+  }
+</style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <h3>Issue Form</h3>
+      <form [formGroup]="issueform" (ngSubmit)="issuebooks()">
+        <div  *ngIf="failedmessage" class="alert alert-danger alert-dismissible fade show" id="liveAlertPlaceholder" role="alert">
+          <strong>  FAILED !! NO BOOKS IN THE LIBRARY</strong>
+          <button type="button" (click)="clearmessage()" class="btn-close" aria-label="Close"></button>
+          </div>
+        <div  *ngIf="successmessage" class="alert alert-success alert-dismissible fade show" id="liveAlertPlaceholder" role="alert">
+          <strong>  BOOK ISSUED SUCCESSFULLY</strong>
+          <button type="button" (click)="clearmessage()" class="btn-close" aria-label="Close"></button>
+          </div>
+         <div class="form-group">
+          <label for="name">Book Id:</label>
+          <input type="text" id="name" name="bookid" required formControlName="bookid" required/>
+        </div>
+        <div class="form-group">
+          <label for="memberid">Member Id:</label>
+          <input type="text" id="memberid" name="memberid" required formControlName="memberid" required/>
+        </div>
+
+
+        <button type="submit" id="liveAlertPlaceholder" [disabled]="!issueform.valid">ISSUE BOOK</button>
+      </form>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <h3>Return Form</h3>
+      <form [formGroup]="returnform" (ngSubmit)="returnbooks()" >
+        <div *ngIf="returnsuccessmessage" class="alert alert-success alert-dismissible fade show" id="liveAlertPlaceholder" role="alert">
+          <strong>  BOOK RETURNED  SUCCESSFULLY!</strong>
+          <button type="button" (click)="clearmessage()" class="btn-close" aria-label="Close"></button>
+          </div>
+          <div  *ngIf="issuecheck" class="alert alert-danger alert-dismissible fade show" id="liveAlertPlaceholder" role="alert">
+            <strong>  NO ISSUED BOOK FOUND!!</strong>
+            <button type="button" (click)="clearmessage()" class="btn-close" aria-label="Close"></button>
+            </div>
+         <div class="form-group">
+
+          <label for="name">Book Id:</label>
+          <input type="text" id="name" name="bookid" required formControlName="bookid" required/>
+        </div>
+        <div class="form-group">
+          <label for="memberid">Member Id:</label>
+          <input type="text" id="memberid" name="memberid" required formControlName="memberid" required/>
+        </div>
+
+
+
+        <button type="submit" id="liveAlertPlaceholder" [disabled]="!returnform.valid">RETURN BOOK</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Books Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #F4F4F4;
+        color: #333;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      form {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #FFF;
+        box-shadow: 0px 5px 10px #00c6ff;
+      }
+
+      .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        flex-basis: 25%;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="radio"] {
+        flex-basis: 75%;
+        padding: 10px;
+        border: 1px solid #CCC;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="radio"] {
+        margin-left: 178px;
+        appearance: none;
+      }
+
+      input[type="radio"]::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #999;
+        border-radius: 50%;
+        margin-right: 5px;
+        vertical-align: middle;
+      }
+
+      input[type="radio"]:checked::before {
+        background-color: #008CBA;
+        border-color: #008CBA;
+      }
+
+      button[type="submit"] {
+        background-color: #008CBA;
+        color: #FFF;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      .gen{
+        padding-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Books Form</h1>
+    <form #addbookform="ngForm" (submit)="getvalues(addbookform)">
+      <div *ngIf="message" class="alert alert-success alert-dismissible fade show" id="liveAlertPlaceholder" role="alert">
+        <strong>  BOOKS ADDED SUCCESSFULLY!</strong>
+        <button type="button" (click)="clearmessage()" class="btn-close" aria-label="Close"></button>
+        </div>
+       <div class="form-group">
+        <label for="name">title:</label>
+        <input type="text" id="name" [(ngModel)]="title" name="title" required>
+      </div>
+     
+      <div class="form-group">
+        <label for="author">author:</label>
+        <input type="text" id="author"[(ngModel)]="author" name="author" required>
+      </div>
+      <div class="form-group">
+        <label for="quantity">quantity:</label>
+        <input type="number" id="quantity" [(ngModel)]="quantity" name="quantity"  required>
+      </div>
+      <div class="form-group">
+        <label for="row">row:</label>
+        <input type="number" id="row"[(ngModel)]="row" name="row" required>
+      </div>
+      <div class="form-group">
+        <label for="coloumn">coloumn:</label>
+        <input type="number" id="coloumn"[(ngModel)]="coloumn" name="coloumn" required>
+</div>
+      <button type="submit" [disabled]="!addbookform.valid">ADD BOOK</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+ <style>
+
+
+
+body {
+
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+
+
+.hero {
+  background: linear-gradient(to bottom, #0072ff, #00c6ff);
+  height: 500px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+
+.features {
+
+  padding: 50px 0;
+}
+
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.features ul {
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.features li {
+  color: white;
+  width: 31%;
+  margin-bottom: 30px;
+  background-color: black;opacity: 0.9;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.features li:hover {
+  color: white;
+  background-color: black;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.features li h3 {
+
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.features li p {
+
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+
+.contact {
+  background: linear-gradient(to bottom, #0072ff, #00c6ff);
+  padding: 50px 0;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.contact form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contact label {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.contact button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+  background-color:#fff;
+color: #333;
+}
+
+header {
+  background: black;
+  color: white;
+  opacity: 0.9;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin-left: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+nav a:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+.head{
+  color: white;
+}
+
+.lib{
+  padding-left: 20px;
+  color: gold;
+}
+.pa{
+  text-align: justify;
+}
+form {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #FFF;
+        box-shadow: 0px 5px 10px #00c6ff;
+      }
+
+      .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        flex-basis: 25%;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="radio"] {
+        flex-basis: 75%;
+        padding: 10px;
+        border: 1px solid #CCC;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+       input[type="radio"] {
+        margin-left: 47px;
+        appearance: none;
+      }
+
+      input[type="radio"]::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #999;
+        border-radius: 50%;
+        margin-right: 5px;
+        vertical-align: middle;
+      }
+
+      input[type="radio"]:checked::before {
+        background-color: #008CBA;
+        border-color: #008CBA;
+      }
+
+      button[type="submit"] {
+        background-color: #008CBA;
+        color: #FFF;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      .error{
+        padding-bottom: 5px;
+      }
+
+ </style>
+</head>
+<body>
+  <header>
+
+    <h1><i class="fa-solid fa-book"></i><span class="lib">Library </span>Management System</h1>
+    <nav>
+      <ul>
+        <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><b>Apply To Join</b></a> </li>
+        <li><a routerLink="Login"><b>Login</b></a></li>
+
+
+      </ul>
+    </nav>
+  </header>
+
+
+  <section class="hero">
+
+
+      <div class="row">
+       <div class="col-8 pa" >
+
+      <h2 class="head">Welcome to Library Management System</h2>
+      <p>This system helps librarians manage their library collections, track borrowed books, and manage user accounts. It also offers features such as advanced search, book recommendations, and integration with online bookstores. With our user-friendly interface, you can easily add, edit, or delete books, as well as view real-time reports on library usage and book availability.</p>
+      <a routerLink="/login" class="btn">Get started</a>
+    </div>
+    <div class="col-4 ">
+      <img src="/assets/img/home.png"   width="400" height="400" alt="" >
+    </div>
+    </div>
+
+
+
+
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <h2>Features</h2>
+      <ul>
+        <li>Search and browse library catalog</li>
+        <li>Manage book collection</li>
+        <li>Track borrowed books</li>
+        <li>Manage user accounts</li>
+        <li>Generate reports</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form action="#" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Library Management System. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">NEW MEMBER FORM</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div  *ngIf="message" class="alert alert-success alert-dismissible fade show" id="liveAlertPlaceholder" role="alert">
+        <strong>  REQUEST SENT SUCCESSFULLY!</strong>
+        <button
+          type="button"
+          class="btn-close"
+          (click)="clearmessage()"
+          aria-label="Close"
+        ></button>
+
+        </div>
+        <form [formGroup]="addmembersform" (ngSubmit)="getvalues()">
+          <div class="form-group">
+            <label for="name">name:</label>
+            <input type="text" id="name" name="name"  formControlName="name" required/>
+
+          </div>
+          <div class="text-danger error">
+            <div *ngIf="(addmembersform.get('name')?.hasError('required') && addmembersform.get('name')?.touched)"><b>this field is required </b></div>
+            </div>
+
+          <div class="form-group">
+            <label for="proffession">proffession:</label>
+            <input type="text" id="proffession" name="proffession" required formControlName="proffession" required/>
+          </div>
+          <div class="form-group">
+            <label for="phno">phno:</label>
+            <input type="tel" id="phno" name="phno"  formControlName="phno" required minlength="10" />
+          </div>
+          <div class="text-danger error">
+            <div *ngIf="(addmembersform.get('phno')?.hasError('minlength') && addmembersform.get('phno')?.touched)"><b>enter minimum 10 digit</b></div>
+            </div>
+          <div class="form-group">
+            <label for="age">age:</label>
+            <input type="number" id="age" name="age" required formControlName="age"/>
+          </div>
+          <div class="form-group1">
+            <label for="gender">gender:</label>
+          <input type="radio" name="gender"  value="male" formControlName="gender"><span class="gen">
+          male</span>
+      <input type="radio" name="gender" value="female" formControlName="gender"><span class="gen">female</span>
+    </div>
+          <button type="submit" id="liveAlertPlaceholder" [disabled]="!addmembersform.valid">Send</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
